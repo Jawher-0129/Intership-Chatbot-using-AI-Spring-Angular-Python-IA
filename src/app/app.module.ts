@@ -7,12 +7,16 @@ import { RegisterComponent } from './register/register.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './navbar/navbar.component';
+import { ListUsersComponent } from './list-users/list-users.component';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ListUsersComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

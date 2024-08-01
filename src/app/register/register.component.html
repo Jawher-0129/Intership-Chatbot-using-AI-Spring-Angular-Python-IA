@@ -2,22 +2,38 @@
   <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
     <div class="mb-3">
       <label class="form-label">Nom</label>
-      <input type="text" class="form-control" id="nom" placeholder="Foulen" [(ngModel)]="user.nom" name="nom" required>
+      <input type="text" class="form-control" id="nom" placeholder="Foulen" [(ngModel)]="user.nom" name="nom" required pattern="^[a-zA-ZÀ-ÿ\s\-']*$" #nom="ngModel">
+      <div *ngIf="nom.invalid && nom.touched" class="text-danger">
+        <div *ngIf="nom.errors?.['required']">Le nom est requis.</div>
+        <div *ngIf="nom.errors?.['pattern']">Le nom ne doit pas contenir de chiffres ou de caractères spéciaux.</div>
+      </div>
     </div>
     <div class="mb-3">
       <label class="form-label">Prenom</label>
-      <input type="text" class="form-control" id="prenom" placeholder="Ben foulen" [(ngModel)]="user.prenom" name="prenom" required>
+      <input type="text" class="form-control" id="prenom" placeholder="Ben foulen" [(ngModel)]="user.prenom" name="prenom" required pattern="^[a-zA-ZÀ-ÿ\s\-']*$" #prenom="ngModel">
+      <div *ngIf="prenom.invalid && prenom.touched" class="text-danger">
+        <div *ngIf="prenom.errors?.['required']">Le prénom est requis.</div>
+        <div *ngIf="prenom.errors?.['pattern']">Le prénom ne doit pas contenir de chiffres ou de caractères spéciaux.</div>
+      </div>
     </div>
     <div class="mb-3">
       <label class="form-label">Adresse Email</label>
-      <input type="email" class="form-control" id="email" placeholder="foulen@gmail.com" [(ngModel)]="user.email" name="email" required>
+      <input type="email" class="form-control" id="email" placeholder="foulen@gmail.com" [(ngModel)]="user.email" name="email" required email #email="ngModel">
+      <div *ngIf="email.invalid && email.touched" class="text-danger">
+        <div *ngIf="email.errors?.['required']">Une adresse email est requise.</div>
+        <div *ngIf="email.errors?.['email']">Une adresse email valide est requise.</div>
+      </div>
     </div>
     <div class="mb-3">
       <label class="form-label">Mot de passe</label>
-      <input type="password" class="form-control" id="password" placeholder="Votre mot de passe" [(ngModel)]="user.password" name="password" required>
+      <input type="password" class="form-control" id="password" placeholder="Votre mot de passe" [(ngModel)]="user.password" name="password" required minlength="6" #password="ngModel">
+      <div *ngIf="password.invalid && password.touched" class="text-danger">
+        <div *ngIf="password.errors?.['required']">Le mot de passe est requis.</div>
+        <div *ngIf="password.errors?.['minlength']">Le mot de passe doit comporter au moins 6 caractères.</div>
+      </div>
     </div>
     <div class="col-auto">
-      <button type="submit" class="btn btn-primary mb-3">Enregistrer</button>
+      <button type="submit" class="btn btn-primary mb-3" [disabled]="registerForm.invalid">Enregistrer</button>
     </div>
   </form>
 </div>

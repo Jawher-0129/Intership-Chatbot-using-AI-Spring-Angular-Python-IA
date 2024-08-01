@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 @RestController
 @AllArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1")
 public class UserController {
 

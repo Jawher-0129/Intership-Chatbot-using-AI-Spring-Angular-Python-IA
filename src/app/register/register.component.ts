@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit{
     nom: '',
     prenom: '',
     password: '',
-    role: '' // Si vous avez un champ rôle dans votre DTO
+    role: ''
   };
 
   onSubmit()
