@@ -22,6 +22,7 @@ public class UserService {
   }
 
   public User save(User user) {
+    user.setRole("CLIENT");
     return userRepository.saveAndFlush(user);
   }
 
