@@ -1,4 +1,4 @@
-package com.example.StageTalanChat.configuration;
+/*package com.example.StageTalanChat.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,15 +23,16 @@ public class WebSecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/signup/p1").permitAll();
-                    auth.anyRequest().authenticated();
-                })
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                );
-        return http.build();
+      http.csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> {
+          auth.requestMatchers( "/signup/p1").permitAll();
+          auth.requestMatchers("/api/**").authenticated();
+          auth.anyRequest().authenticated();
+        })
+        .sessionManagement(session -> session
+          .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        );
+      return http.build();
     }
 
 
@@ -39,4 +40,5 @@ public class WebSecurityConfiguration {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
       return authenticationConfiguration.getAuthenticationManager();
     }
-}
+}*/
+

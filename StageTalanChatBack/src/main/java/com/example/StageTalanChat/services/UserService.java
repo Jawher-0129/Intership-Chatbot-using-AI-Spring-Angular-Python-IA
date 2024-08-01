@@ -1,0 +1,37 @@
+package com.example.StageTalanChat.services;
+
+import com.example.StageTalanChat.entities.User;
+import com.example.StageTalanChat.repository.UserRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+@Service
+@AllArgsConstructor
+public class UserService {
+
+  private final UserRepository userRepository;
+
+  public List<User> getUsers() {
+    return userRepository.findAll();
+  }
+  public Optional<User> getUserById(long id)
+  {
+    return userRepository.findById(id);
+  }
+
+  public User save(User user) {
+    return userRepository.saveAndFlush(user);
+  }
+
+  public boolean existById(long id)
+  {
+    return userRepository.existsById(id);
+  }
+
+  public void deleteuser(long id)
+  {
+    userRepository.deleteById(id);
+  }
+}

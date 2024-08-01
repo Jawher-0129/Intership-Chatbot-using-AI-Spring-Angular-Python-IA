@@ -1,0 +1,23 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <div class="mb-3">
+      <label class="form-label">Nom</label>
+      <input type="text" class="form-control" id="nom" placeholder="Foulen" [(ngModel)]="user.nom" name="nom" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Prenom</label>
+      <input type="text" class="form-control" id="prenom" placeholder="Ben foulen" [(ngModel)]="user.prenom" name="prenom" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Adresse Email</label>
+      <input type="email" class="form-control" id="email" placeholder="foulen@gmail.com" [(ngModel)]="user.email" name="email" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Mot de passe</label>
+      <input type="password" class="form-control" id="password" placeholder="Votre mot de passe" [(ngModel)]="user.password" name="password" required>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-3">Enregistrer</button>
+    </div>
+  </form>
+</div>
