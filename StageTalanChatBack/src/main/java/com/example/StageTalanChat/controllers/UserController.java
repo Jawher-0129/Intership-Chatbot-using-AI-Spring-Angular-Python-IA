@@ -51,7 +51,7 @@ public class UserController {
     else
     {
       HashMap<String,String> message=new HashMap<>();
-      message.put("message ",id+"task not found or matched");
+      message.put("message ",id+" user not found or matched");
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
   }

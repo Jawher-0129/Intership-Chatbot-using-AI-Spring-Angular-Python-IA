@@ -25,7 +25,7 @@ public class WebSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
       http.csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(auth -> {
-          auth.requestMatchers( "/signup/p1").permitAll();
+          auth.requestMatchers( "/signup/p1","/login/p2").permitAll();
           auth.requestMatchers("/api/**").authenticated();
           auth.anyRequest().authenticated();
         })
