@@ -32,7 +32,7 @@ export class ListUsersComponent implements OnInit{
     this.serviceUser.deleteUser(id).subscribe(
       res =>{
         console.log(res)
-       // this.users.split(index,1)
+        this.users.split(index,1)
       },
       err =>{
         console.log(err)
