@@ -1,0 +1,12 @@
+.logo-img {
+  width: 40px; /* Ajustez la taille selon vos besoins */
+  height: auto;
+  border-radius: 50%; /* Pour un effet arrondi */
+  border: 2px solid #ffffff; /* Bordure blanche autour du logo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  transition: transform 0.3s; /* Transition pour l'effet de survol */
+}
+
+.logo-img:hover {
+  transform: scale(1.1); /* Effet de zoom au survol */
+}
