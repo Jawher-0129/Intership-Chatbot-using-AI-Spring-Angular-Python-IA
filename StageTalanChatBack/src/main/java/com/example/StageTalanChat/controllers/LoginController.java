@@ -1,6 +1,6 @@
 package com.example.StageTalanChat.controllers;
 
-/*import com.example.StageTalanChat.dto.LoginRequest;
+import com.example.StageTalanChat.dto.LoginRequest;
 import com.example.StageTalanChat.dto.LoginResponse;
 import com.example.StageTalanChat.dto.SignupRequest;
 import com.example.StageTalanChat.services.jwt.UserServiceImpl;
@@ -54,4 +54,4 @@ public class LoginController {
 
     return ResponseEntity.ok(new LoginResponse(jwt));
   }
-}*/
+}

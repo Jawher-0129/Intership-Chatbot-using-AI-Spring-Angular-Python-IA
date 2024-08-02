@@ -1,12 +1,6 @@
 package com.example.StageTalanChat.services;
+
 import com.example.StageTalanChat.dto.SignupRequest;
-import com.example.StageTalanChat.entities.User;
-import com.example.StageTalanChat.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-
-/*import com.example.StageTalanChat.dto.SignupRequest;
 import com.example.StageTalanChat.entities.User;
 import com.example.StageTalanChat.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -17,9 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthServiceImpl implements AuthService{
-
     private final UserRepository userRepository;
-
     private final PasswordEncoder passwordEncoder;
 
 
@@ -44,25 +36,7 @@ public class AuthServiceImpl implements AuthService{
         userRepository.save(user);
         return true;
     }
-}*/
-
-@Service
-public class AuthServiceImpl implements AuthService{
-  UserRepository userRepository;
-  @Autowired
-  public AuthServiceImpl(UserRepository userRepository) {
-    this.userRepository = userRepository;
-  }
-
-  @Override
-  public boolean createUser(SignupRequest signupRequest) {
-   if(userRepository.existsByEmail(signupRequest.getEmail()))
-    {
-      return false;
-    }
-    User user=new User(signupRequest.getNom(),signupRequest.getPassword(),signupRequest.getEmail(),signupRequest.getPrenom(),"CLIENT");
-    userRepository.save(user);
-    return true;
-  }
 }
+
+
 

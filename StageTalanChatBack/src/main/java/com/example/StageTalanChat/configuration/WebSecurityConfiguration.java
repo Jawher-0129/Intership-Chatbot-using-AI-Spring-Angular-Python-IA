@@ -1,4 +1,4 @@
-/*package com.example.StageTalanChat.configuration;
+package com.example.StageTalanChat.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +26,9 @@ public class WebSecurityConfiguration {
       http.csrf(csrf -> csrf.disable())
         .authorizeHttpRequests(auth -> {
           auth.requestMatchers( "/signup/p1","/login/p2").permitAll();
+          auth.requestMatchers("/api/v1/*").permitAll();
+          auth.requestMatchers("/api/v1/users/**").permitAll();
+          auth.requestMatchers("/api/v1/user/**").permitAll(); // Explicitly permit /users endpoints
           auth.requestMatchers("/api/**").authenticated();
           auth.anyRequest().authenticated();
         })
@@ -40,5 +43,5 @@ public class WebSecurityConfiguration {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
       return authenticationConfiguration.getAuthenticationManager();
     }
-}*/
+}
 

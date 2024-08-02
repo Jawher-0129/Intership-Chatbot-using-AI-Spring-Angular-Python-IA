@@ -23,7 +23,7 @@ export class ServiceUserService {
   }
 
   signUp(user : any): Observable<any> {
-    return this.http.post(this.url+"/api/v1/adduser",user);
+    return this.http.post(this.url+"/signup/p1",user);
   }
 
   getUserById(id:any)

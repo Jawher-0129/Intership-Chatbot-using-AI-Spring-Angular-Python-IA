@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class UpdateComponent implements OnInit{
 
-  user : any
+  user : any={}
 
   id :any
 

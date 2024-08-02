@@ -1,6 +1,6 @@
 package com.example.StageTalanChat.services.jwt;
 
-/*import com.example.StageTalanChat.entities.User;
+import com.example.StageTalanChat.entities.User;
 import com.example.StageTalanChat.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,4 +25,4 @@ public class UserServiceImpl implements UserDetailsService {
       .orElseThrow(() -> new UsernameNotFoundException("User not found with email:"+email));
     return new org.springframework.security.core.userdetails.User(user.getEmail(),user.getPassword(),Collections.emptyList());
   }
-}*/
+}

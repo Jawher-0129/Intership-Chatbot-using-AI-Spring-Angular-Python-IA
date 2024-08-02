@@ -1,6 +1,6 @@
 package com.example.StageTalanChat.utils;
 
-/*import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -65,4 +65,4 @@ public class JwtUtil {
     return Keys.hmacShaKeyFor(keyBytes);
   }
 
-}*/
+}

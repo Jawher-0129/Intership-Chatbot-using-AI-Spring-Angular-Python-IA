@@ -8,12 +8,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 @RestController
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1")
 public class UserController {
+  private final PasswordEncoder passwordEncoder;
 
   private final UserService userService;
 
@@ -23,8 +28,9 @@ public class UserController {
   }
 
   @GetMapping("/users/{id}")
-  public User getUser(@PathVariable long id) {
+  public ResponseEntity<User> getUser(@PathVariable long id) {
     return userService.getUserById(id)
+      .map(user -> ResponseEntity.ok(user))
       .orElseThrow(() -> new EntityNotFoundException("Request not found"));
   }
 
@@ -43,9 +49,10 @@ public class UserController {
       user1.setNom(user.getNom());
       user1.setPrenom(user.getPrenom());
       user1.setEmail(user.getEmail());
-      user1.setPassword(user.getPassword());
+      String hashpwd=passwordEncoder.encode(user.getPassword());
+      user1.setPassword(hashpwd);
       user1.setRole(user.getRole());
-      userService.save(user);
+      userService.save(user1);
       return ResponseEntity.ok().body(user1);
     }
     else
