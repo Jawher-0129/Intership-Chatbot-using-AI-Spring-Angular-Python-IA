@@ -26,6 +26,28 @@
             <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
           </form>
           <div *ngIf="message" class="alert mt-3" [ngClass]="messageClass">{{ message }}</div>
+
+          <!-- Google Sign-In Button -->
+          <div id="g_id_onload"
+               data-client_id="585831849215-jokbgmu013ti2dqr3i30c3126ol3e6at.apps.googleusercontent.com"
+               data-context="signin"
+               data-login_uri="http://localhost:3000/api/login"
+               data-auto_select="true"
+               data-itp_support="true">
+          </div>
+          <div class="g_id_signin"
+               data-type="standard"
+               data-shape="rectangular"
+               data-theme="outline"
+               data-text="sign_in_with"
+               data-size="large"
+               data-logo_alignment="left">
+          </div>
+
+          <!-- Sign Up Link -->
+          <div class="text-center mt-3">
+            <p>Vous n'avez pas de compte ? <a routerLink="/register" class="btn btn-link">S'inscrire</a></p>
+          </div>
         </div>
       </div>
     </div>

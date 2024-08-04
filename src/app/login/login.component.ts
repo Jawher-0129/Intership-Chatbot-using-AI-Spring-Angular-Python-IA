@@ -29,9 +29,37 @@ export class LoginComponent implements OnInit{
 
   }
 
+  private initGoogleSignIn() {
+    (window as any).google.accounts.id.initialize({
+      client_id: '585831849215-jokbgmu013ti2dqr3i30c3126ol3e6at.apps.googleusercontent.com',
+      callback: this.handleCredentialResponse
+    });
+    (window as any).google.accounts.id.prompt();
+  }
+
+  private handleCredentialResponse(response: any) {
+    const idToken = response.credential;
+    this.service.loginWithGoogle(idToken).subscribe(
+      response => {
+        // Handle successful login
+        console.log("Google login successful:", response);
+        // Redirect or handle as needed
+      },
+      err => {
+        console.log("Google login error:", err);
+        // Handle error
+      }
+    );
+  }
+
 
   ngOnInit() {
+    this.initGoogleSignIn();
+
+
   }
+
+
 
   OnLogin()
   {

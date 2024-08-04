@@ -38,7 +38,7 @@
             <i class="bi bi-list"></i> Listes d'utilisateurs
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="_user?.role!=null">
           <a class="nav-link" (click)="onLogout()">
             <i class="bi bi-box-arrow-right"></i> Logout
           </a>

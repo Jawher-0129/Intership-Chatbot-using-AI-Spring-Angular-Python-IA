@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServiceUserService } from '../service-user.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
 
-  constructor(private fb: FormBuilder, private serviceuser: ServiceUserService) {
+  constructor(private fb: FormBuilder, private serviceuser: ServiceUserService,private router: Router) {
     this.registerForm = this.fb.group({
       nom: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\\s\\-\'"]*$')]],
       prenom: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\\s\\-\'"]*$')]],
@@ -28,6 +29,7 @@ export class RegisterComponent implements OnInit {
         .subscribe(
           res => {
             console.log("User created successfully", res);
+            this.router.navigateByUrl("/login")
           },
           err => {
             console.log(err);

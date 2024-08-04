@@ -43,6 +43,8 @@ export class ServiceUserService {
     return this.http.post(this.url+"/login/p2",signRequest);
   }
 
+
+
   hello() : Observable<any> {
     return this.http.get(this.url+"/api/hello",{
       headers: this.createAuthorizationHeader()
@@ -60,15 +62,21 @@ export class ServiceUserService {
     }
   }
 
+  loginWithGoogle(idToken: string): Observable<any> {
+    return this.http.post(this.url + "/login/info", { idToken });
+  }
+
+
+
   logout(): void {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('user');
   }
 
-  refreshPage()
-  {
-    location.reload();
-  }
+
+
+
+
 
 
 
