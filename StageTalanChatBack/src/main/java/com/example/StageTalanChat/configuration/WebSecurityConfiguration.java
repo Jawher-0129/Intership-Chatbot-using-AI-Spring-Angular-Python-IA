@@ -39,10 +39,12 @@ public class WebSecurityConfiguration {
       public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
           .authorizeHttpRequests(auth -> {
-            auth.requestMatchers("/signup/p1", "/login/p2").permitAll();
+            auth.requestMatchers("/signup/p1").permitAll();
+            auth.requestMatchers("/login/p2").permitAll();
             auth.requestMatchers("/api/v1/users/**").permitAll();
             auth.requestMatchers("/api/v1/user/**").permitAll();
             auth.requestMatchers("/api/v1/deleteuser/**").permitAll();
+            auth.requestMatchers("/api/v1/adduser").permitAll();
             auth.requestMatchers("/api/hello").permitAll();
             auth.anyRequest().authenticated(); // Ensure this line is called for other requests
           })

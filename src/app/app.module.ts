@@ -9,6 +9,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { NavbarComponent } from './navbar/navbar.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { UpdateComponent } from './update/update.component';
+import { AjoutComponent } from './ajout/ajout.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { UpdateComponent } from './update/update.component';
     RegisterComponent,
     NavbarComponent,
     ListUsersComponent,
-    UpdateComponent
+    UpdateComponent,
+    AjoutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

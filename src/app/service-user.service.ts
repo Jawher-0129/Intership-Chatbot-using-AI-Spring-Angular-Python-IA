@@ -26,6 +26,10 @@ export class ServiceUserService {
     return this.http.post(this.url+"/signup/p1",user);
   }
 
+  addUser(user : any): Observable<any> {
+    return this.http.post(this.url+"/api/v1/adduser", user);
+  }
+
   getUserById(id:any)
   {
     return this.http.get(this.url+"/api/v1/users/"+id)
@@ -34,6 +38,9 @@ export class ServiceUserService {
   updateUser(id:any,user:any)
   {
     return this.http.put(this.url+"/api/v1/user/"+id,user)
+  }
+  login(signRequest : any): Observable<any> {
+    return this.http.post(this.url+"/login/p2",signRequest);
   }
 
 

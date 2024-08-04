@@ -1,0 +1,16 @@
+.container {
+  margin-top: 50px;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.alert {
+  margin-top: 15px;
+}

@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div *ngIf="alertMessage" class="alert alert-{{alertType}} alert-dismissible fade show" role="alert">
+        {{ alertMessage }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-center">
+          <h4>Ajouter Utilisateur</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="ajoutForm" (ngSubmit)="onAjout()">
+            <div class="mb-3">
+              <label class="form-label">Nom</label>
+              <input type="text" class="form-control" id="nom" placeholder="Foulen" formControlName="nom">
+              <div *ngIf="ajoutForm.get('nom')?.invalid && ajoutForm.get('nom')?.touched" class="text-danger">
+                <div *ngIf="ajoutForm.get('nom')?.errors?.['required']">Le nom est requis.</div>
+                <div *ngIf="ajoutForm.get('nom')?.errors?.['pattern']">Le nom ne doit pas contenir de chiffres ou de caractères spéciaux.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Prenom</label>
+              <input type="text" class="form-control" id="prenom" placeholder="Ben foulen" formControlName="prenom">
+              <div *ngIf="ajoutForm.get('prenom')?.invalid && ajoutForm.get('prenom')?.touched" class="text-danger">
+                <div *ngIf="ajoutForm.get('prenom')?.errors?.['required']">Le prénom est requis.</div>
+                <div *ngIf="ajoutForm.get('prenom')?.errors?.['pattern']">Le prénom ne doit pas contenir de chiffres ou de caractères spéciaux.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Adresse Email</label>
+              <input type="email" class="form-control" id="email" placeholder="foulen@gmail.com" formControlName="email">
+              <div *ngIf="ajoutForm.get('email')?.invalid && ajoutForm.get('email')?.touched" class="text-danger">
+                <div *ngIf="ajoutForm.get('email')?.errors?.['required']">Une adresse email est requise.</div>
+                <div *ngIf="ajoutForm.get('email')?.errors?.['email']">Une adresse email valide est requise.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Mot de passe</label>
+              <input type="password" class="form-control" id="password" placeholder="Votre mot de passe" formControlName="password">
+              <div *ngIf="ajoutForm.get('password')?.invalid && ajoutForm.get('password')?.touched" class="text-danger">
+                <div *ngIf="ajoutForm.get('password')?.errors?.['required']">Le mot de passe est requis.</div>
+                <div *ngIf="ajoutForm.get('password')?.errors?.['minlength']">Le mot de passe doit comporter au moins 6 caractères.</div>
+              </div>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary" [disabled]="ajoutForm.invalid">Enregistrer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

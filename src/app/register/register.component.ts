@@ -10,6 +10,7 @@ import { ServiceUserService } from '../service-user.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
+
   constructor(private fb: FormBuilder, private serviceuser: ServiceUserService) {
     this.registerForm = this.fb.group({
       nom: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\\s\\-\'"]*$')]],
