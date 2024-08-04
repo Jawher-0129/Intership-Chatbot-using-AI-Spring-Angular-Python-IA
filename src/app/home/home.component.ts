@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ServiceUserService} from "../service-user.service";
+import {SessionService} from "../session.service";
+import {User} from "../user.model";
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,10 @@ import {ServiceUserService} from "../service-user.service";
 export class HomeComponent implements OnInit{
   message :string='';
 
-  constructor(private serviceUser: ServiceUserService) {
+  user: User | null = null;
+
+
+  constructor(private serviceUser: ServiceUserService,private sessionService:SessionService) {
   }
 
   hello()
@@ -27,7 +32,11 @@ export class HomeComponent implements OnInit{
 
   ngOnInit() {
     this.hello()
+    this.user=this.sessionService.getUser();
+    console.log(this.user);
   }
+
+
 
 
 }

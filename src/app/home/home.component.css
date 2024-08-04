@@ -1,0 +1,23 @@
+.welcome-container {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-message {
+  font-size: 2.5em;
+  color: #343a40;
+  margin-bottom: 10px;
+}
+
+.welcome-subtitle {
+  font-size: 1.2em;
+  color: #6c757d;
+}
+
+.main-content {
+  margin-top: 40px; /* Ajoutez de l'espace entre le message de bienvenue et le reste du contenu */
+}

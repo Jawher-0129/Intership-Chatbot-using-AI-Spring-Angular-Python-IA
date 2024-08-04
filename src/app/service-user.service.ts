@@ -62,6 +62,12 @@ export class ServiceUserService {
 
   logout(): void {
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('user');
+  }
+
+  refreshPage()
+  {
+    location.reload();
   }
 
 
