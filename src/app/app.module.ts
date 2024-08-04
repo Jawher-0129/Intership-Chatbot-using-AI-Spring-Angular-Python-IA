@@ -11,6 +11,7 @@ import { ListUsersComponent } from './list-users/list-users.component';
 import { UpdateComponent } from './update/update.component';
 import { AjoutComponent } from './ajout/ajout.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     ListUsersComponent,
     UpdateComponent,
     AjoutComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

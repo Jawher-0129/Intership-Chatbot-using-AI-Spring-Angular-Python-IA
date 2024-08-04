@@ -10,3 +10,18 @@
 .logo-img:hover {
   transform: scale(1.1); /* Effet de zoom au survol */
 }
+
+.navbar-nav .nav-item .nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-item .nav-link i {
+  margin-right: 8px; /* Space between icon and text */
+  font-size: 1.2rem; /* Size of the icon */
+  color: #ffffff; /* Color of the icon */
+}
+
+.navbar-nav .nav-item .nav-link:hover i {
+  color: #f8f9fa; /* Change color on hover */
+}

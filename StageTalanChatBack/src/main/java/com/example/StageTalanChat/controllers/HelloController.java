@@ -1,5 +1,6 @@
 package com.example.StageTalanChat.controllers;
 
+import com.example.StageTalanChat.dto.HelloResponse;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
 @GetMapping("/hello")
-  public String hello()
+  public HelloResponse hello()
   {
-    return "Hello from authorized API request";
+    return new HelloResponse("Hello from authorized API request");
   }
 
 

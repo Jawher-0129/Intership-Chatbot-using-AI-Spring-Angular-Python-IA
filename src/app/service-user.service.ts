@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -42,6 +42,28 @@ export class ServiceUserService {
   login(signRequest : any): Observable<any> {
     return this.http.post(this.url+"/login/p2",signRequest);
   }
+
+  hello() : Observable<any> {
+    return this.http.get(this.url+"/api/hello",{
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  private createAuthorizationHeader(): HttpHeaders {
+    const jwtToken = localStorage.getItem('jwtToken');
+    if (jwtToken) {
+      console.log("JWT token found in local storage", jwtToken);
+      return new HttpHeaders().set("Authorization", "Bearer " + jwtToken);
+    } else {
+      console.log("JWT token not found in local storage");
+      return new HttpHeaders();
+    }
+  }
+
+  logout(): void {
+    localStorage.removeItem('jwtToken');
+  }
+
 
 
 }

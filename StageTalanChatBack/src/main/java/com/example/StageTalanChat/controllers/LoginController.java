@@ -50,6 +50,9 @@ public class LoginController {
 
     String jwt = jwtUtil.generateToken(userDetails.getUsername());
 
+
+
+
     return ResponseEntity.ok(new LoginResponse(jwt));
   }
 }
