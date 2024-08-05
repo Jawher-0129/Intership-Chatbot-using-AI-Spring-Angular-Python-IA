@@ -69,11 +69,11 @@ public class LoginController {
   }
 
 
-  @PostMapping("/google")
+  /*@PostMapping("/google")
   public ResponseEntity<?> loginWithGoogle(@RequestBody Map<String, String> body) {
     String idToken = body.get("idToken");
     return ResponseEntity.ok("Google login successful");
-  }
+  }*/
 
 
 

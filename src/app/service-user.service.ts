@@ -66,6 +66,14 @@ export class ServiceUserService {
     return this.http.post(this.url + "/login/info", { idToken });
   }
 
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post(`${this.url}/api/auth/forgot-password`, { email });
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    return this.http.post(`${this.url}/api/auth/reset-password`, { token, newPassword });
+  }
+
 
 
   logout(): void {

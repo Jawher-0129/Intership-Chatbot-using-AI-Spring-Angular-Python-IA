@@ -6,6 +6,8 @@ import {UpdateComponent} from "./update/update.component";
 import {AjoutComponent} from "./ajout/ajout.component";
 import {LoginComponent} from "./login/login.component";
 import {HomeComponent} from "./home/home.component";
+import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
+import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 
 const routes: Routes = [
   {path:'ajout',component:AjoutComponent},
@@ -13,7 +15,9 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'update/:id',component:UpdateComponent},
   {path:'login',component:LoginComponent},
-  {path:'home',component:HomeComponent}
+  {path:'home',component:HomeComponent},
+  {path:'forgotpassword',component:ForgotPasswordComponent},
+  {path:'resetpassword',component:ResetPasswordComponent}
 ];
 
 @NgModule({
