@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   errorMessage: string | null = null;
 
+  
   constructor(private fb: FormBuilder, private serviceuser: ServiceUserService, private router: Router) {
     this.registerForm = this.fb.group({
       nom: ['', [Validators.required, Validators.pattern('^[a-zA-ZÀ-ÿ\\s\\-\'"]*$')]],
