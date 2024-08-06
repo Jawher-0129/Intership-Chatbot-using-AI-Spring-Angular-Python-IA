@@ -25,9 +25,8 @@
             </div>
             <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
           </form>
-          <div *ngIf="message" class="alert mt-3" [ngClass]="messageClass">{{ message }}</div>
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
 
-          <!-- Google Sign-In Button -->
           <div id="g_id_onload"
                data-client_id="585831849215-jokbgmu013ti2dqr3i30c3126ol3e6at.apps.googleusercontent.com"
                data-context="signin"
@@ -44,7 +43,6 @@
                data-logo_alignment="left">
           </div>
 
-          <!-- Sign Up Link -->
           <div class="text-center mt-3">
             <p>Vous n'avez pas de compte ? <a routerLink="/register" class="btn btn-link">S'inscrire</a></p>
           </div>

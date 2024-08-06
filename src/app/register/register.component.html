@@ -7,6 +7,9 @@
         </div>
         <div class="card-body">
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+              {{ errorMessage }}
+            </div>
             <div class="mb-3">
               <label class="form-label">Nom</label>
               <input type="text" class="form-control" id="nom" placeholder="Foulen" formControlName="nom">

@@ -14,10 +14,9 @@ export class LoginComponent implements OnInit{
 
   loginForm: FormGroup;
 
-
   message: string | null = null;
   messageClass: string | null = null;
-
+  errorMessage: string | null = null;
 
 
 
@@ -84,7 +83,7 @@ export class LoginComponent implements OnInit{
       },
       err =>{
         console.log(err);
-        alert("erreur login");
+        this.errorMessage = 'Email ou mot de passe incorrect.';
       }
     )
   }

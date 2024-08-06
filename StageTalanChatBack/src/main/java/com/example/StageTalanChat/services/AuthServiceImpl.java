@@ -33,6 +33,7 @@ public class AuthServiceImpl implements AuthService{
 
         String hashPassword=passwordEncoder.encode(signupRequest.getPassword());
         user.setPassword(hashPassword);
+        user.setRole("CLIENT");
         userRepository.save(user);
         return true;
     }

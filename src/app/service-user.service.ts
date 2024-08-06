@@ -10,7 +10,7 @@ export class ServiceUserService {
   url='http://localhost:8080';
 
   constructor(private http : HttpClient) { }
-
+  
 
   getAllUsers()
   {
