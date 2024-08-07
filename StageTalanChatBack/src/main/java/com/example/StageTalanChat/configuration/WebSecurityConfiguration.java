@@ -39,6 +39,7 @@ public class WebSecurityConfiguration implements WebMvcConfigurer {
       .authorizeHttpRequests(auth -> {
         auth.requestMatchers("/signup/p1").permitAll();
         auth.requestMatchers("/login/p2").permitAll();
+        auth.requestMatchers("/api/v1/chatbot").permitAll();
         auth.requestMatchers("/login/google").permitAll();
         auth.requestMatchers("/api/auth/forgot-password").permitAll();
         auth.requestMatchers("/api/auth/reset-password").permitAll();

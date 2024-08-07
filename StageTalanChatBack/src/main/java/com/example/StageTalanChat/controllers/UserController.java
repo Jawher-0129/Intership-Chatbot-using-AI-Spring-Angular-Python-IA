@@ -11,8 +11,11 @@ import java.util.HashMap;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Map;
+
 @RestController
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:4200")
@@ -80,4 +83,16 @@ public class UserController {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
   }
+
+  @PostMapping("/chatbot")
+  public Map<String, String> chatbotResponse(@RequestBody Map<String, String> payload) {
+    RestTemplate restTemplate = new RestTemplate();
+    String flaskApiUrl = "http://localhost:5000/chatbot";
+
+    ResponseEntity<Map> response = restTemplate.postForEntity(flaskApiUrl, payload, Map.class);
+    return response.getBody();
+  }
+
+
+
 }

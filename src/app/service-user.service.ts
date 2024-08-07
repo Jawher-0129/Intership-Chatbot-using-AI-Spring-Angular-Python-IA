@@ -10,7 +10,7 @@ export class ServiceUserService {
   url='http://localhost:8080';
 
   constructor(private http : HttpClient) { }
-  
+
 
   getAllUsers()
   {
@@ -72,6 +72,11 @@ export class ServiceUserService {
 
   resetPassword(token: string, newPassword: string): Observable<any> {
     return this.http.post(`${this.url}/api/auth/reset-password`, { token, newPassword });
+  }
+
+
+  getChatbotResponse(message: string): Observable<any> {
+    return this.http.post<any>(this.url+"/api/v1/chatbot",{ message });
   }
 
 

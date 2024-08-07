@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     LoginComponent,
     HomeComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ChatbotComponent
   ],
   imports: [
     BrowserModule,
