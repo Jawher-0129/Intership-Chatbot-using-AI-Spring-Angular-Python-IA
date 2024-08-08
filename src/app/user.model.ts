@@ -4,4 +4,7 @@ export interface User{
   prenom: string;
   email: string;
   role: string;
+  qrCodeUrl?: string; // Cette propriété est optionnelle
+
 }
+

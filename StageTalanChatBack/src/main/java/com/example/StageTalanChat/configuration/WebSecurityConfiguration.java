@@ -38,6 +38,7 @@ public class WebSecurityConfiguration implements WebMvcConfigurer {
       .csrf(csrf -> csrf.disable())
       .authorizeHttpRequests(auth -> {
         auth.requestMatchers("/signup/p1").permitAll();
+        auth.requestMatchers("/api/v1/download-users-pdf").permitAll();
         auth.requestMatchers("/login/p2").permitAll();
         auth.requestMatchers("/api/v1/chatbot").permitAll();
         auth.requestMatchers("/login/google").permitAll();

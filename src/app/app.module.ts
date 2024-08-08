@@ -1,6 +1,7 @@
+import { QRCodeModule } from 'angular2-qrcode';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgxCaptchaModule } from 'ngx-captcha';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
@@ -29,14 +30,17 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     HomeComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxCaptchaModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

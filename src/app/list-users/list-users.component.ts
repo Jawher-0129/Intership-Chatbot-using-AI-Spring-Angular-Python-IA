@@ -10,6 +10,9 @@ export class ListUsersComponent implements OnInit{
 
 
   users: any=[]
+  filteredUsers: any[] = [];
+  searchTerm: string = '';
+
 
   constructor(private serviceUser: ServiceUserService) {
   }
@@ -20,13 +23,14 @@ export class ListUsersComponent implements OnInit{
       res =>{
         console.log(res)
         this.users=res
+        
       },
       err =>{
         console.log(err)
       }
     );
-
   }
+  
   SupprimerUser(id:any,index :number)
   {
     this.serviceUser.deleteUser(id).subscribe(
@@ -39,6 +43,19 @@ export class ListUsersComponent implements OnInit{
       }
     )
   }
+
+  downloadPdf() {
+    this.serviceUser.downloadPdf().subscribe((response: Blob) => {
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(response);
+      link.download = 'users.pdf';
+      link.click();
+    }, error => {
+      console.error('Error downloading the PDF', error);
+    });
+  }
+
+  
 
   ngOnInit() {
    this.afficherUsers()

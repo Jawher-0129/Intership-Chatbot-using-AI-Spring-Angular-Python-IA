@@ -45,6 +45,8 @@ export class ServiceUserService {
 
 
 
+
+
   hello() : Observable<any> {
     return this.http.get(this.url+"/api/hello",{
       headers: this.createAuthorizationHeader()
@@ -77,6 +79,10 @@ export class ServiceUserService {
 
   getChatbotResponse(message: string): Observable<any> {
     return this.http.post<any>(this.url+"/api/v1/chatbot",{ message });
+  }
+
+  downloadPdf(): Observable<Blob> {
+    return this.http.get(`${this.url}/api/v1/download-users-pdf`, { responseType: 'blob' });
   }
 
 

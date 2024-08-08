@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup,Validators} from "@angular/forms";
+import {FormBuilder, FormGroup,Validators,FormControl} from "@angular/forms";
 import {ServiceUserService} from "../service-user.service";
 import {Router} from "@angular/router";
 import {User} from "../user.model";
@@ -13,6 +13,7 @@ import {SessionService} from "../session.service";
 export class LoginComponent implements OnInit{
 
   loginForm: FormGroup;
+  siteKey: string = '6LfUciEqAAAAAIrywddi1XP7vzUVMi8jWE3x2IFm';
 
   message: string | null = null;
   messageClass: string | null = null;
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit{
   constructor(private service: ServiceUserService,private fb: FormBuilder,private router: Router,private sessionService: SessionService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
 
   }
