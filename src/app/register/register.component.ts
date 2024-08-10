@@ -22,6 +22,18 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  signInWithGitHub()
+  {
+    const clientID='Ov23lihM5V47f1ehdypf';
+    const redirectUri='http://localhost:4200/callback'
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientID}&redirect_uri=${redirectUri}`;
+    this.router.navigateByUrl("/login")
+  }
+
+
+
+
+
   ngOnInit(): void {}
 
   onSubmit() {

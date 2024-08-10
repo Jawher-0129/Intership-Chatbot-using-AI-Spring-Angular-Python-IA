@@ -1,8 +1,10 @@
 package com.example.StageTalanChat.services;
+import org.springframework.data.domain.Pageable;
 
 import com.example.StageTalanChat.entities.User;
 import com.example.StageTalanChat.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +46,16 @@ public class UserService {
   public Optional<User> getUserByEmail(String email) {
     return userRepository.findByEmail(email);
   }
+  public void incrementUserActive(Long userId) {
+    User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+    user.setActive(user.getActive() + 1);
+    userRepository.save(user);
+  }
+
+  public List<User> getTopActiveUsers() {
+    Pageable pageable = PageRequest.of(0, 3);
+    return userRepository.findTopActiveUsers(pageable);
+  }
+
 
 }

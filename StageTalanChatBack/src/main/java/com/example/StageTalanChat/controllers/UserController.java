@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.ByteArrayInputStream;
@@ -114,6 +115,11 @@ public class UserController {
 
     ResponseEntity<Map> response = restTemplate.postForEntity(flaskApiUrl, payload, Map.class);
     return response.getBody();
+  }
+
+  @GetMapping("/top-active")
+  public List<User> getTopActiveUsers() {
+    return userService.getTopActiveUsers();
   }
 
 

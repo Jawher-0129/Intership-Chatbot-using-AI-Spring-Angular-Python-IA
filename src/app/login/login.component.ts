@@ -53,10 +53,19 @@ export class LoginComponent implements OnInit{
   }
 
 
+
   ngOnInit() {
+
+    const refreshed = sessionStorage.getItem('refreshed');
+    if (!refreshed) {
+      // Si non, rafraîchissez la page
+      sessionStorage.setItem('refreshed', 'true');
+      location.reload();
     this.initGoogleSignIn();
 
 
+  }
+  
   }
 
 
@@ -75,7 +84,8 @@ export class LoginComponent implements OnInit{
             nom: response.nom,
             prenom: response.prenom,
             email: response.email,
-            role: response.role
+            role: response.role,
+            active: response.active
           };
           this.sessionService.setUser(user);
           localStorage.setItem('user', JSON.stringify(user));

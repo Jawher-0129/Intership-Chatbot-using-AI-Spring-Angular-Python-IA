@@ -21,6 +21,7 @@ public class User {
     private String role;
     @Column(name = "reset_token")
     private String resetToken;
+    private Integer active;
 
   public User(String nom, String prenom, String email, String password, String role) {
     this.nom = nom;
@@ -28,5 +29,6 @@ public class User {
     this.email = email;
     this.password = password;
     this.role = role;
+
   }
 }

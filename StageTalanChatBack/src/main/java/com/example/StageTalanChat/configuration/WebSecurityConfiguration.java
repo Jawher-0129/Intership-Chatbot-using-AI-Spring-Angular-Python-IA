@@ -39,9 +39,12 @@ public class WebSecurityConfiguration implements WebMvcConfigurer {
       .authorizeHttpRequests(auth -> {
         auth.requestMatchers("/signup/p1").permitAll();
         auth.requestMatchers("/api/v1/download-users-pdf").permitAll();
+        auth.requestMatchers("/api/v1/top-active").permitAll();
         auth.requestMatchers("/login/p2").permitAll();
         auth.requestMatchers("/api/v1/chatbot").permitAll();
         auth.requestMatchers("/login/google").permitAll();
+        auth.requestMatchers("/login/github").permitAll();
+        auth.requestMatchers("/login/github/auth").permitAll();
         auth.requestMatchers("/api/auth/forgot-password").permitAll();
         auth.requestMatchers("/api/auth/reset-password").permitAll();
         auth.requestMatchers("/api/v1/users/**").permitAll();
@@ -57,11 +60,11 @@ public class WebSecurityConfiguration implements WebMvcConfigurer {
       .sessionManagement(session -> session
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
       )
-      /*.oauth2Login(oauth2 -> oauth2
+      .oauth2Login(oauth2 -> oauth2
         .loginPage("/login")
         .defaultSuccessUrl("/home", true)
         .failureUrl("/login?error")
-      )*/
+      )
       .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
     return http.build();

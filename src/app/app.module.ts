@@ -16,7 +16,10 @@ import { HomeComponent } from './home/home.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
-
+import { NgChartsModule } from 'ng2-charts';
+import { OAuthModule, OAuthService, OAuthStorage } from 'angular-oauth2-oidc';
+import { authConfig } from './authconfig';
+import { CallbackComponent } from './callback/callback.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     ChatbotComponent,
+    CallbackComponent,
     
   ],
   imports: [
@@ -40,9 +44,25 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     HttpClientModule,
     ReactiveFormsModule,
     NgxCaptchaModule,
+    NgChartsModule,
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: ['http://localhost:8080'],
+        sendAccessToken: true,
+      },
+    }),
+    
     
   ],
-  providers: [],
+  providers: [ OAuthService,
+    { provide: OAuthStorage, useValue: sessionStorage }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private oauthService: OAuthService) {
+    this.oauthService.configure(authConfig);
+    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  }
+
+ }

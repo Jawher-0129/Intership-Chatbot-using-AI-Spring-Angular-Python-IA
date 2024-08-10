@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +85,19 @@ export class ServiceUserService {
   downloadPdf(): Observable<Blob> {
     return this.http.get(`${this.url}/api/v1/download-users-pdf`, { responseType: 'blob' });
   }
+
+  getTopActiveUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.url+"/api/v1/top-active");
+  }
+
+  loginWithGitHub(accessToken: string): Observable<any> {
+    return this.http.post(this.url + "/login/github", { accessToken });
+  }
+
+  exchangeCodeForToken(code: string): Observable<any> {
+    return this.http.post<any>(`${this.url}/login/github`, { code });
+  }
+  
 
 
 

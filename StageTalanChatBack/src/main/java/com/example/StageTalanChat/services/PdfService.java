@@ -31,7 +31,6 @@ public class PdfService {
       Document document = new Document(pdf);
       document.setMargins(20, 20, 20, 20);
 
-      // Load and add the company logo
       String logoPath = new ClassPathResource("C:\\\\Users\\\\jawhe\\\\OneDrive\\\\Bureau\\\\StageTalanChatFront\\\\src\\\\assets\\\\images.png").getPath();
       Image logo = new Image(ImageDataFactory.create(logoPath));
       logo.setWidth(100);
@@ -39,7 +38,6 @@ public class PdfService {
 
       document.add(logo);
 
-      // Add a header with custom font
       PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
       document.add(new Paragraph("Liste des Utilisateurs")
         .setFont(font)
@@ -47,7 +45,6 @@ public class PdfService {
         .setTextAlignment(TextAlignment.CENTER)
         .setMarginBottom(20));
 
-      // Create a table with headers
       float[] columnWidths = {1, 3, 3};
       Table table = new Table(UnitValue.createPercentArray(columnWidths));
       table.setWidth(UnitValue.createPercentValue(100));
@@ -55,17 +52,14 @@ public class PdfService {
       table.addHeaderCell("Nom et Prenom").setBackgroundColor(ColorConstants.LIGHT_GRAY);
       table.addHeaderCell("Email").setBackgroundColor(ColorConstants.LIGHT_GRAY);
 
-      // Add user data to the table
       for (User user : users) {
         table.addCell(String.valueOf(user.getId()));
         table.addCell(user.getNom() + " " + user.getPrenom());
         table.addCell(user.getEmail());
       }
 
-      // Add the table to the document
       document.add(table);
 
-      // Close the document
       document.close();
       return new ByteArrayInputStream(out.toByteArray());
     } catch (Exception e) {

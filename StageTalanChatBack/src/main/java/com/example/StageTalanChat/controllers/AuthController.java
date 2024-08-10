@@ -25,5 +25,9 @@ public class AuthController {
     String newPassword = payload.get("newPassword");
     passwordResetService.resetPassword(token, newPassword);
   }
+
+
+
+
 }
 

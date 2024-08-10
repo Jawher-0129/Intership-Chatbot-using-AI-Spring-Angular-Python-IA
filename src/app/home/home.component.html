@@ -2,3 +2,14 @@
   <h1 class="welcome-message">Bienvenue Mr/Mme {{ user?.nom }}</h1>
   <p class="welcome-subtitle">Nous sommes heureux de vous revoir!</p>
 </div>
+
+<div class="container mt-5" *ngIf="user?.role=='ADMIN'">
+  <h2>Statistiques des Utilisateurs Actifs</h2>
+  <div style="display: block;">
+    <canvas baseChart
+            [data]="chartData"
+            [options]="chartOptions"
+            chartType="pie">
+    </canvas>
+  </div>
+</div>

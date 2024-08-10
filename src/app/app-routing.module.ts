@@ -9,6 +9,8 @@ import {HomeComponent} from "./home/home.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 import {ChatbotComponent} from "./chatbot/chatbot.component";
+import { CallbackComponent } from './callback/callback.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {path:'ajout',component:AjoutComponent},
@@ -19,7 +21,10 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'forgotpassword',component:ForgotPasswordComponent},
   {path:'resetpassword',component:ResetPasswordComponent},
-  {path:'chatbot',component:ChatbotComponent}
+  {path:'chatbot',component:ChatbotComponent},
+  { path: 'callback', component:CallbackComponent },
+  { path: 'componentapp', component:AppComponent },
+
 ];
 
 @NgModule({

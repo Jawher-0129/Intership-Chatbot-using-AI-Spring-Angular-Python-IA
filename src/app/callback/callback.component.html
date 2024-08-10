@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Authentication</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f8f9fa;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+      background: #ffffff;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .btn-custom {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 0.25rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .btn-custom:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mb-4">User Authenticated</h1>
+    <p class="mb-4">You have successfully authenticated with GitHub. You can now log in to your account.</p>
+    <a routerLink="/login" class="btn btn-custom">Go to Login</a>
+  </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -12,6 +12,9 @@ export class ListUsersComponent implements OnInit{
   users: any=[]
   filteredUsers: any[] = [];
   searchTerm: string = '';
+  isPopupVisible: boolean = false;
+
+  
 
 
   constructor(private serviceUser: ServiceUserService) {
