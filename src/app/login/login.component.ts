@@ -41,13 +41,10 @@ export class LoginComponent implements OnInit{
     const idToken = response.credential;
     this.service.loginWithGoogle(idToken).subscribe(
       response => {
-        // Handle successful login
         console.log("Google login successful:", response);
-        // Redirect or handle as needed
       },
       err => {
         console.log("Google login error:", err);
-        // Handle error
       }
     );
   }
@@ -58,13 +55,12 @@ export class LoginComponent implements OnInit{
 
     const refreshed = sessionStorage.getItem('refreshed');
     if (!refreshed) {
-      // Si non, rafraîchissez la page
       sessionStorage.setItem('refreshed', 'true');
       location.reload();
-    this.initGoogleSignIn();
 
 
   }
+  this.initGoogleSignIn();
   
   }
 

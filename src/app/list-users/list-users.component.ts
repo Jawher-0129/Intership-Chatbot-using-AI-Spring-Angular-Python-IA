@@ -1,50 +1,57 @@
-import {Component, OnInit} from '@angular/core';
-import {ServiceUserService} from "../service-user.service";
+import { Component, OnInit } from '@angular/core';
+import { ServiceUserService } from '../service-user.service';
 
 @Component({
   selector: 'app-list-users',
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.css']
 })
-export class ListUsersComponent implements OnInit{
-
-
-  users: any=[]
-  filteredUsers: any[] = [];
+export class ListUsersComponent implements OnInit {
+  users: any[] = [];  // Specify as an array
+  filteredUsers: any[] = [];  // Specify as an array
   searchTerm: string = '';
-  isPopupVisible: boolean = false;
 
-  
+  constructor(private serviceUser: ServiceUserService) {}
 
-
-  constructor(private serviceUser: ServiceUserService) {
+  ngOnInit() {
+    this.afficherUsers();
   }
 
-  afficherUsers()
-  {
+  afficherUsers() {
     this.serviceUser.getAllUsers().subscribe(
-      res =>{
-        console.log(res)
-        this.users=res
-        
+      (res: any[]) => {
+        console.log(res);
+        this.users = res;
+        this.filteredUsers = this.users;
       },
-      err =>{
-        console.log(err)
+      err => {
+        console.log(err);
       }
     );
   }
-  
-  SupprimerUser(id:any,index :number)
-  {
+
+  filterUsers() {
+    if (!this.searchTerm) {
+      this.filteredUsers = this.users;
+    } else {
+      this.filteredUsers = this.users.filter(user =>
+        user.nom.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        user.prenom.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        user.email.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
+  }
+
+  SupprimerUser(id: any, index: number) {
     this.serviceUser.deleteUser(id).subscribe(
-      res =>{
-        console.log(res)
-        this.users.split(index,1)
+      res => {
+        console.log(res);
+        this.filteredUsers.splice(index, 1);
       },
-      err =>{
-        console.log(err)
+      err => {
+        console.log(err);
       }
-    )
+    );
   }
 
   downloadPdf() {
@@ -57,11 +64,4 @@ export class ListUsersComponent implements OnInit{
       console.error('Error downloading the PDF', error);
     });
   }
-
-  
-
-  ngOnInit() {
-   this.afficherUsers()
-  }
-
 }

@@ -1,4 +1,3 @@
-import { QRCodeModule } from 'angular2-qrcode';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxCaptchaModule } from 'ngx-captcha';
@@ -20,6 +19,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { OAuthModule, OAuthService, OAuthStorage } from 'angular-oauth2-oidc';
 import { authConfig } from './authconfig';
 import { CallbackComponent } from './callback/callback.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -45,12 +45,14 @@ import { CallbackComponent } from './callback/callback.component';
     ReactiveFormsModule,
     NgxCaptchaModule,
     NgChartsModule,
+    QRCodeModule,
     OAuthModule.forRoot({
       resourceServer: {
         allowedUrls: ['http://localhost:8080'],
         sendAccessToken: true,
       },
     }),
+
     
     
   ],

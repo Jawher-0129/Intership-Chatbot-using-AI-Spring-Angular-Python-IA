@@ -62,5 +62,14 @@ export class HomeComponent implements OnInit {
     this.hello();
     this.user = this.sessionService.getUser();
     this.loadUserStats();
+    const refreshed = sessionStorage.getItem('refreshed');
+    if (!refreshed) {
+      sessionStorage.setItem('refreshed', 'true');
+      location.reload();
+
+
+  }
+
+
   }
 }

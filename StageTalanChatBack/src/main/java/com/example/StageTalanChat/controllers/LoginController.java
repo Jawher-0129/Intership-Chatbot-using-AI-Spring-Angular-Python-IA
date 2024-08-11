@@ -67,7 +67,6 @@ public class LoginController {
       user = userService1.getUserByEmail(loginRequest.getEmail())
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-      // Increment the user's active value
       userService1.incrementUserActive(user.getId());
 
     } catch (UsernameNotFoundException e) {
@@ -81,35 +80,28 @@ public class LoginController {
 
   @GetMapping("/github")
   public ResponseEntity<String> githubLogin(@RequestParam("code") String code) {
-    // Remplacez par les informations spécifiques à votre application GitHub
     String clientId = "Ov23lihM5V47f1ehdypf";
     String clientSecret = "8188220b2fbbc25c70fb99d7406e2e63f1833b9b";
-    String redirectUri = "http://localhost:4200/callback"; // L'URL de redirection
+    String redirectUri = "http://localhost:4200/callback";
 
-    // Échange du code contre un jeton d'accès
     String tokenUrl = "https://github.com/login/oauth/access_token";
     RestTemplate restTemplate = new RestTemplate();
 
-    // Construire le corps de la requête
     MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
     body.add("client_id", clientId);
     body.add("client_secret", clientSecret);
     body.add("code", code);
     body.add("redirect_uri", redirectUri);
 
-    // Créer l'entête de la requête
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
     HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(body, headers);
 
-    // Effectuer la requête POST pour obtenir le jeton d'accès
     ResponseEntity<String> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, request, String.class);
 
-    // Extraire le jeton d'accès de la réponse
     String accessToken = extractAccessToken(response.getBody());
 
-    // Utiliser le jeton d'accès pour obtenir les informations utilisateur
     String userInfoUrl = "https://api.github.com/user";
     HttpHeaders userHeaders = new HttpHeaders();
     userHeaders.set("Authorization", "Bearer " + accessToken);
@@ -132,10 +124,9 @@ public class LoginController {
     User existingUser = userService1.getUserByEmail(email).orElse(null);
 
     if (existingUser == null) {
-      // L'utilisateur n'existe pas, donc nous devons le créer
       User newUser = new User();
       newUser.setNom(login);
-      newUser.setPrenom(login); // GitHub ne fournit pas directement le prénom, utilisez login ou un autre attribut
+      newUser.setPrenom(login);
       newUser.setEmail(email);
       newUser.setRole("CLIENT");
       String pass="123456jawher";
@@ -144,22 +135,20 @@ public class LoginController {
       existingUser = userService1.save(newUser);
     }
 
-    // Générer un jeton JWT pour l'utilisateur
     String jwt = jwtUtil.generateToken(existingUser.getEmail());
 
-    // Retourner le JWT et d'autres détails utilisateur si nécessaire
     return ResponseEntity.ok("User authenticated: " + existingUser.getNom() + " (" + existingUser.getEmail() + ") JWT: " + jwt);
   }
 
   @GetMapping("/github/auth")
   public ResponseEntity<String> redirectToGithub() {
     String clientId = "Ov23lihM5V47f1ehdypf";
-    String redirectUri = "http://localhost:4200/callback"; // Votre URL de redirection
+    String redirectUri = "http://localhost:4200/callback";
 
     String authorizationUrl = "https://github.com/login/oauth/authorize"
       + "?client_id=" + clientId
       + "&redirect_uri=" + redirectUri
-      + "&scope=user:email"; // Ajout du scope user:email
+      + "&scope=user:email";
 
     return ResponseEntity.status(HttpStatus.FOUND)
       .header(HttpHeaders.LOCATION, authorizationUrl)
@@ -168,8 +157,6 @@ public class LoginController {
 
 
   private String extractAccessToken(String responseBody) {
-    // Extraire le jeton d'accès du corps de la réponse
-    // Utilisez une bibliothèque JSON ou une méthode simple pour extraire le jeton
     String[] parts = responseBody.split("&");
     for (String part : parts) {
       String[] keyValue = part.split("=");
@@ -179,14 +166,5 @@ public class LoginController {
     }
     return null;
   }
-
-
-
-
-
-
-
-
-
 
 }

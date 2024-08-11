@@ -13,10 +13,10 @@ export class ServiceUserService {
   constructor(private http : HttpClient) { }
 
 
-  getAllUsers()
-  {
-    return this.http.get(this.url+"/api/v1/users")
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.url + "/api/v1/users");
   }
+  
 
   deleteUser(id : any)
   {
