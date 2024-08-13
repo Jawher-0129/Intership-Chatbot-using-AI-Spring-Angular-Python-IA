@@ -2,7 +2,6 @@ package com.example.StageTalanChat.controllers;
 
 import com.example.StageTalanChat.dto.LoginRequest;
 import com.example.StageTalanChat.dto.LoginResponse;
-import com.example.StageTalanChat.dto.SignupRequest;
 import com.example.StageTalanChat.entities.User;
 import com.example.StageTalanChat.services.UserService;
 import com.example.StageTalanChat.services.jwt.UserServiceImpl;
@@ -12,35 +11,26 @@ import org.springframework.http.*;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-import java.util.Collections;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/login")
 public class LoginController {
-
   private final AuthenticationManager authenticationManager;
   private final UserServiceImpl userService;
   private final UserService userService1;
   private final JwtUtil jwtUtil;
   @Autowired
   private PasswordEncoder passwordEncoder;
-
 
   @Autowired
   public LoginController(AuthenticationManager authenticationManager, UserServiceImpl userService, JwtUtil jwtUtil,UserService userService1) {

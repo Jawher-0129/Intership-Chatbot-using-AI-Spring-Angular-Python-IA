@@ -7,8 +7,8 @@ import { ServiceUserService } from '../service-user.service';
   styleUrls: ['./list-users.component.css']
 })
 export class ListUsersComponent implements OnInit {
-  users: any[] = [];  // Specify as an array
-  filteredUsers: any[] = [];  // Specify as an array
+  users: any[] = [];  
+  filteredUsers: any[] = []; 
   searchTerm: string = '';
 
   constructor(private serviceUser: ServiceUserService) {}
@@ -46,7 +46,7 @@ export class ListUsersComponent implements OnInit {
     this.serviceUser.deleteUser(id).subscribe(
       res => {
         console.log(res);
-        this.filteredUsers.splice(index, 1);
+        this.users.splice(index, 1);
       },
       err => {
         console.log(err);

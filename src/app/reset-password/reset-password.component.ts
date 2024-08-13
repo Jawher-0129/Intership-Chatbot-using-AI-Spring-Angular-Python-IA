@@ -24,7 +24,7 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit() {
     if (this.password === this.confirmPassword) {
       this.serviceUser.resetPassword(this.token, this.password).subscribe(response => {
-        alert('Password has been reset.');
+        alert('Mot de passe a été changé.');
         this.router.navigateByUrl("/login")
 
       }, error => {

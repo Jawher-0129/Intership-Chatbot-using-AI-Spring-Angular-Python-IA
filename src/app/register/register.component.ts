@@ -30,10 +30,7 @@ export class RegisterComponent implements OnInit {
     this.router.navigateByUrl("/login")
   }
 
-
-
-
-
+  
   ngOnInit(): void {}
 
   onSubmit() {

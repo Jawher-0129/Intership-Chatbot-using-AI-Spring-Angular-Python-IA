@@ -42,7 +42,6 @@ public class UserService {
     userRepository.deleteById(id);
   }
 
-  // Méthode pour obtenir un utilisateur par e-mail
   public Optional<User> getUserByEmail(String email) {
     return userRepository.findByEmail(email);
   }

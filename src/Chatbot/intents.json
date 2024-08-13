@@ -1,0 +1,39 @@
+{
+    "intents": [
+        {
+            "tag": "salutations",
+            "patterns": [
+                "bonjour", "salut", "coucou", "bonne journée", "salutations", "quoi de neuf ?", "comment ça va ?"
+            ],
+            "responses": ["Bonjour, comment puis-je vous aider aujourd'hui ?", "Salut, comment puis-je vous aider aujourd'hui ?", "Bonjour, que puis-je faire pour vous ?"]
+        },
+        {
+            "tag": "au revoir",
+            "patterns": [
+                "à plus tard", "à bientôt", "au revoir", "je m'en vais", "bonne journée", "bye", "ciao", "à plus"
+            ],
+            "responses": ["Désolé de vous voir partir :(", "À bientôt", "Au revoir"]
+        },
+        {
+            "tag": "comment ça va",
+            "patterns": [
+                "comment ça va ?", "comment vas-tu ?", "comment ça se passe ?", "ça va ?"
+            ],
+            "responses": ["Je suis un bot, mais je vais très bien ! Comment puis-je vous aider aujourd'hui ?", "Je vais bien, merci de demander ! En tant qu'assistant AI, je ne ressens pas les émotions de la même manière que les humains, mais je fonctionne correctement et suis prêt à vous aider avec toutes vos questions. Veuillez me dire comment je peux vous être utile."]
+        },
+        {
+            "tag": "inconnu",
+            "patterns": [
+                "blabla", "mots aléatoires", "pas dans la liste", "je ne comprends pas ça", "confus"
+            ],
+            "responses": ["Désolé, je n'ai pas compris.", "Pouvez-vous reformuler s'il vous plaît ?", "Je ne suis pas sûr de comment répondre à cela."]
+        },
+        {
+            "tag": "aider",
+            "patterns": [
+                "j'ai besoin d'aide", "pouvez-vous m'aider s'il vous plaît ?", "aide"
+            ],
+            "responses": ["Bien sûr, comment puis-je vous aider ?", "Pouvez-vous me dire comment je peux vous aider ?", "Je suis là pour vous aider, dites-moi simplement ce que vous voulez."]
+        }
+    ]
+}

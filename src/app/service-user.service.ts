@@ -45,9 +45,6 @@ export class ServiceUserService {
   }
 
 
-
-
-
   hello() : Observable<any> {
     return this.http.get(this.url+"/api/hello",{
       headers: this.createAuthorizationHeader()
@@ -98,8 +95,6 @@ export class ServiceUserService {
     return this.http.post<any>(`${this.url}/login/github`, { code });
   }
   
-
-
 
   logout(): void {
     localStorage.removeItem('jwtToken');

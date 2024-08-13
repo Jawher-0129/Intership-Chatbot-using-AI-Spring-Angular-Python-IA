@@ -22,7 +22,7 @@ public class PasswordResetService {
   public void sendPasswordResetEmail(String email) {
     User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("Email n'existe pas"));
     if (user == null) {
-      throw new RuntimeException("Email not found");
+      throw new RuntimeException("Email introuvable");
     }
     String token = UUID.randomUUID().toString();
     System.out.println(token);
@@ -30,7 +30,7 @@ public class PasswordResetService {
     userRepository.save(user);
 
     String resetUrl = "http://localhost:4200/resetpassword?token=" + token;
-   emailService.sendEmail(user.getEmail(), "Password Reset Request", "To reset your password, click the link below:\n" + resetUrl);
+   emailService.sendEmail(user.getEmail(), "Mot de passe oublié", "Pour changé votre mot de passe , cliquez sur le lien ci dessous:\n" + resetUrl);
   }
 
   public void resetPassword(String token, String newPassword) {

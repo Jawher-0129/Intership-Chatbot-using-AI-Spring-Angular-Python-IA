@@ -8,14 +8,12 @@ export class SessionService {
 
    _user: User  | null = null;
 
-  // Méthode pour définir l'utilisateur
   setUser(user: User): void {
     this._user = user;
     localStorage.setItem('user', JSON.stringify(user));
 
   }
 
-  // Méthode pour obtenir les informations de l'utilisateur
   getUser(): User | null {
     if (!this._user) {
       const userJson = localStorage.getItem('user');
@@ -24,7 +22,6 @@ export class SessionService {
     return this._user;
   }
 
-  // Méthode pour vérifier si l'utilisateur est connecté
   isLoggedIn(): boolean {
     return this._user !== null;
   }
